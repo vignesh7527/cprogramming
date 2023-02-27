@@ -1,0 +1,20 @@
+#include <stdio.h>
+int main() {
+int P, Q, R;
+printf("Enter the values of P, Q, and R: ");
+scanf("%d %d %d", &P, &Q, &R);
+printf("Numbers from %d to %d, except those containing %d:\n", P, Q, R);
+for (int i = P; i <= Q; i++) {
+int num = i;
+while (num != 0) {
+if (num % 10 == R) {
+goto skip;
+}
+num /= 10;
+}
+printf("%d\n", i);
+skip:
+continue;
+}
+return 0;
+}
