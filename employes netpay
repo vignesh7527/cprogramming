@@ -1,0 +1,39 @@
+#include <stdio.h>
+#define MAX_EMPLOYEES 5
+struct Employee {
+    int employeeID;
+    char employeeName[50];
+    float basicPay;
+    float allowance;
+    float deduction;
+    float netPay;
+};
+
+void calculateNetPay(struct Employee *employee) {
+    employee->netPay = employee->basicPay + employee->allowance - employee->deduction;
+}
+
+int main() {
+    struct Employee employees[MAX_EMPLOYEES];
+    int i;
+
+    // Get input for employee data
+    for (i = 0; i < MAX_EMPLOYEES; i++) {
+        printf("Enter details for employee %d:\n", i+1);
+        printf("ID: ");
+        scanf("%d", &employees[i].employeeID);
+        printf("Name: ");
+        scanf("%s", employees[i].employeeName);
+        printf("Basic Pay: ");
+        scanf("%f", &employees[i].basicPay);
+        printf("Allowance: ");
+        scanf("%f", &employees[i].allowance);
+        printf("Deduction: ");
+        scanf("%f", &employees[i].deduction);
+        
+        calculateNetPay(&employees[i]);
+        printf("Net Pay: %.2f\n", employees[i].netPay);
+    }
+
+    return 0;
+}
